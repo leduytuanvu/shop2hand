@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shop2hand/presentation/pages/signin/singin_controller.dart';
+import 'package:shop2hand/presentation/controllers/sing_in_controller.dart';
 
 class SignInBinding extends Bindings {
   @override

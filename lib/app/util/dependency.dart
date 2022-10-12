@@ -1,10 +1,9 @@
-// import 'package:get/get.dart';
-// // import 'package:getx_clean_architecture/data/repositories/article_repository.dart';
-// import 'package:shop2hand/data/repositories/auth_repository.dart';
+import 'package:get/get.dart';
+import 'package:shop2hand/data/repositories/auth_repository.dart';
+import 'package:shop2hand/domain/interface_repositories/auth_interface_repository.dart';
 
-// class DependencyCreator {
-//   static init() {
-//     Get.lazyPut(() => AuthenticationRepositoryIml());
-//     // Get.lazyPut(() => ArticleRepositoryIml());
-//   }
-// }
+class DependencyCreator {
+  static init() {
+    Get.lazyPut<IAuthenticationRepository>(() => AuthenticationRepository());
+  }
+}

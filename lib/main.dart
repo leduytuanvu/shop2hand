@@ -1,13 +1,16 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop2hand/app/services/local_storage_service.dart';
 import 'package:shop2hand/presentation/navigation/pages.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
-import 'package:shop2hand/presentation/main_binding.dart';
+import 'package:shop2hand/app/util/dependency.dart';
+import 'package:shop2hand/presentation/bindings/splash_binding.dart';
 
 void main() async {
-  // DependencyCreator.init();
+  DependencyCreator.init();
   WidgetsFlutterBinding.ensureInitialized();
-  // await initServices();
+  await initServices();
   runApp(const Shop2Hand());
 }
 
@@ -19,14 +22,14 @@ class Shop2Hand extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: Routers.splash,
-      initialBinding: MainBinding(),
+      initialBinding: SplashBinding(),
       getPages: Pages.pages,
     );
   }
 }
 
-// initServices() async {
-//   log('starting services ...');
-//   await Get.putAsync(() => LocalStorageService().init());
-//   log('All services started...');
-// }
+initServices() async {
+  log('Starting services ...');
+  await Get.putAsync(() => LocalStorageService().init());
+  log('All services started ...');
+}
