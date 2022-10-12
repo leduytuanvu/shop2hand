@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shop2hand/presentation/controllers/splash_controller.dart';
 
 class SplashScreen extends GetWidget<SplashController> {
@@ -10,7 +11,7 @@ class SplashScreen extends GetWidget<SplashController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          child: Lottie.asset('assets/97930-loading.json'),
+          child: Lottie.asset('assets/videos/97930-loading.json'),
         ),
       ),
     );
