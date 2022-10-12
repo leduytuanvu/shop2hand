@@ -11,7 +11,7 @@ class SplashScreen extends GetWidget<SplashController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          child: Lottie.asset('assets/videos/97930-loading.json'),
+          child: Lottie.asset('assets/videos/splash.json'),
         ),
       ),
     );

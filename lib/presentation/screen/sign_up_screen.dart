@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop2hand/presentation/controllers/sign_up_controller.dart';
-import 'package:shop2hand/presentation/navigation/routers.dart';
 import 'package:shop2hand/presentation/widgets/text_field_widget.dart';
 
 class SignUpScreen extends GetWidget<SignUpController> {
   const SignUpScreen({super.key});
-
-  signUp() async {
-    final result = await controller.signUp();
-    if (result) {
-      Get.offAllNamed(Routers.home);
-    } else {
-      Get.snackbar('ERROR', 'SIGN UP FAILED!');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +31,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
           ElevatedButton(
             child: const Text('Sign Up'),
             onPressed: () {
-              signUp();
+              controller.signUp();
             },
           ),
         ],

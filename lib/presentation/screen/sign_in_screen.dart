@@ -8,25 +8,44 @@ class SignInScreen extends GetWidget<SignInController> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Obx(
-        () => ListView(
-          children: [
-            TextFieldWidget(
-                controller: controller.userNameTextController,
-                lable: 'Username'),
-            TextFieldWidget(
-                controller: controller.passwordTextController,
-                lable: 'Password'),
-            ElevatedButton(
-              child: const Text('SIGN IN'),
-              onPressed: () => controller.signIn(),
-            ),
-            controller.loginState.value == LoginState.loading
-                ? const Center(child: CircularProgressIndicator())
-                : Container(),
-              
-          ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  TextFieldWidget(
+                      controller: controller.userNameTextController,
+                      lable: 'Username'),
+                  TextFieldWidget(
+                      controller: controller.passwordTextController,
+                      lable: 'Password'),
+                  ElevatedButton(
+                    child: const Text('SIGN IN'),
+                    onPressed: () => controller.signIn(),
+                  ),
+                ],
+              ),
+              Obx(
+                () {
+                  if (controller.signInState.value == SignInState.loading) {
+                    return Positioned(
+                      top: size.height / 2,
+                      left: size.width / 2,
+                      right: size.width / 2,
+                      child: const CircularProgressIndicator(
+                        color: Colors.black,
+                      ),
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

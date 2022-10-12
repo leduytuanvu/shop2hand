@@ -12,7 +12,7 @@ class HomeScreen extends GetWidget<SignInController> {
       body: Center(
         child: GestureDetector(
           onTap: () {
-            LocalStorageService().clearAllData();
+            LocalStorageService.clearAllData();
           },
           child: Container(
             height: 100,

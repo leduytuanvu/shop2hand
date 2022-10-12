@@ -1,17 +1,21 @@
 import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:shop2hand/app/services/local_storage_service.dart';
+import 'package:shop2hand/data/repositories/account_repository.dart';
 import 'package:shop2hand/domain/exceptions/auth_exception.dart';
-import 'package:shop2hand/domain/interface_repositories/auth_interface_repository.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_up_request.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
 
+enum SignUpState {
+  loading,
+  initial,
+  success,
+  error,
+}
+
 class SignUpController extends GetxController {
-  final LocalStorageService localStorageService;
-  final IAuthenticationRepository iAuthenticationRepository;
-  SignUpController(this.iAuthenticationRepository, this.localStorageService);
+  final AccountRepository accountRepository;
+  SignUpController({required this.accountRepository});
 
   final TextEditingController usernameTextController = TextEditingController();
   final TextEditingController fullNameTextController = TextEditingController();
@@ -23,7 +27,7 @@ class SignUpController extends GetxController {
   final TextEditingController buildingIDTextController =
       TextEditingController();
 
-  Future<bool> signUp() async {
+  Future<void> signUp() async {
     try {
       final userName = usernameTextController.text;
       final password = passwordTextController.text;
@@ -41,11 +45,13 @@ class SignUpController extends GetxController {
         phone: phone,
         username: userName,
       );
-      await iAuthenticationRepository.signUp(signUpRequest);
-      return true;
+      final response = await accountRepository.signUp(signUpRequest);
+      if (response != null) {
+        Get.offAllNamed(Routers.home);
+      }
     } on AuthException catch (e) {
       log(e.toString());
-      return false;
+      Get.snackbar('ERROR', 'SOMTHING WENT WRONG!');
     }
   }
 }
