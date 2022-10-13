@@ -23,7 +23,7 @@ class SignInController extends GetxController {
 
   Future<void> signIn() async {
     try {
-      signInState.value = SignInState.loading;
+      signInState(SignInState.loading);
       await Future.delayed(const Duration(seconds: 3));
       final userName = userNameTextController.text;
       final password = passwordTextController.text;
@@ -36,11 +36,11 @@ class SignInController extends GetxController {
         LocalStorageService.setUser = response.user;
         Get.offAllNamed(Routers.home);
       }
-      signInState.value = SignInState.success;
+      Get.snackbar('HI ${response!.user!.fullName}', 'WELL COME TO SHOP2HAND');
     } catch (e) {
-      signInState.value = SignInState.error;
+      signInState(SignInState.initial);
       log(e.toString());
-      Get.snackbar('ERROR', 'SOMETHING WENT WRONG');
+      Get.snackbar('ERROR', 'USERNAME OR PASSWORD IS WRONG');
     }
   }
 }

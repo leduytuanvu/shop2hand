@@ -38,7 +38,7 @@ class AuthenticationRepository extends IAuthenticationRepository {
       // Get API here ====================
       User user = User(
         id: '1',
-        fullName: 'fullName',
+        fullName: 'LE DUY THUAN VU',
         description: 'description',
         gender: 'gender',
         phone: 'phone',

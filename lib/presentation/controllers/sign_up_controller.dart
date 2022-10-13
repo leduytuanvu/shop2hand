@@ -26,9 +26,12 @@ class SignUpController extends GetxController {
       TextEditingController();
   final TextEditingController buildingIDTextController =
       TextEditingController();
+  var signUpState = SignUpState.initial.obs;
 
   Future<void> signUp() async {
     try {
+      await Future.delayed(const Duration(seconds: 3));
+      signUpState(SignUpState.loading);
       final userName = usernameTextController.text;
       final password = passwordTextController.text;
       final fullName = fullNameTextController.text;
@@ -49,6 +52,7 @@ class SignUpController extends GetxController {
       if (response != null) {
         Get.offAllNamed(Routers.home);
       }
+      Get.snackbar('HI ${response!.user!.fullName}', 'WELL COME TO SHOP2HAND');
     } on AuthException catch (e) {
       log(e.toString());
       Get.snackbar('ERROR', 'SOMTHING WENT WRONG!');
