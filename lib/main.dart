@@ -30,6 +30,6 @@ class Shop2Hand extends StatelessWidget {
 
 initServices() async {
   log('Starting services ...');
-  await Get.putAsync(() => LocalStorageService().init());
+  await Get.putAsync(() => LocalStorageService.init());
   log('All services started ...');
 }

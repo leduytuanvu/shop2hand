@@ -1,42 +1,36 @@
 import 'dart:convert';
+import 'package:get/state_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop2hand/app/config/app_constants.dart';
 import 'package:shop2hand/domain/entities/user.dart';
 
-class LocalStorageService {
-  late SharedPreferences _sharedPreferences;
+class LocalStorageService extends GetxService {
+  static SharedPreferences? _sharedPreferences;
 
-  Future<LocalStorageService?> init() async {
+  static Future<LocalStorageService?> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    return this;
+    return LocalStorageService();
   }
 
-  Future<void> clearAllData() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    _sharedPreferences.clear();
+  static clearAllData() => _sharedPreferences!.clear();
+
+  static String? get getToken {
+    return _sharedPreferences!.getString(AppConstants.sharedReferenceToken);
   }
 
-  Future<String?> getToken() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    return _sharedPreferences.getString(AppConstants.sharedReferenceToken);
-  }
-
-  Future<User?> getUser() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
+  static User? getUser() {
     Map userMap = jsonDecode(
-        _sharedPreferences.getString(AppConstants.sharedReferenceUser)!);
-    var user = User.fromJson(userMap);
-    return user;
+      _sharedPreferences!.getString(AppConstants.sharedReferenceUser)!,
+    );
+    return User.fromJson(userMap);
   }
 
-  Future<void> setToken(String token) async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    _sharedPreferences.setString(AppConstants.sharedReferenceToken, token);
+  static set setToken(String token) {
+    _sharedPreferences!.setString(AppConstants.sharedReferenceToken, token);
   }
 
-  Future<void> setUser(User? user) async {
-    _sharedPreferences = await SharedPreferences.getInstance();
+  static set setUser(User? user) {
     String response = jsonEncode(user);
-    _sharedPreferences.setString(AppConstants.sharedReferenceUser, response);
+    _sharedPreferences!.setString(AppConstants.sharedReferenceUser, response);
   }
 }
