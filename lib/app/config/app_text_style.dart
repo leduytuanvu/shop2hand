@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
+  AppTextStyles._();
   static TextStyle title = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,

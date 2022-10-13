@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop2hand/app/services/local_storage_service.dart';
-import 'package:shop2hand/presentation/controllers/sing_in_controller.dart';
+import 'package:shop2hand/presentation/controllers/home_controller.dart';
 
-class HomeScreen extends GetWidget<SignInController> {
+class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
 
+  // final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
+    final user = controller.user.value!;
     return Scaffold(
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            LocalStorageService.clearAllData();
-          },
-          child: Container(
-            height: 100,
-            width: 100,
-            color: Colors.brown,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(user.fullName ?? ''),
+            ],
           ),
         ),
       ),
