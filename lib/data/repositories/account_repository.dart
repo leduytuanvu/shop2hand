@@ -23,8 +23,6 @@ class AccountRepository extends IAccountRepository {
         gender: signUpRequest.gender,
         phone: signUpRequest.phone,
         buildingID: signUpRequest.buildingId,
-        userName: signUpRequest.username,
-        password: signUpRequest.password,
       );
       String token = 'token';
       SignUpResponse signUpResponse = SignUpResponse(user: user, token: token);

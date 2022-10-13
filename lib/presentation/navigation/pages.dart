@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shop2hand/presentation/bindings/home_binding.dart';
-import 'package:shop2hand/presentation/bindings/signin_binding.dart';
-import 'package:shop2hand/presentation/bindings/signup_binding.dart';
+import 'package:shop2hand/presentation/bindings/sign_in_binding.dart';
+import 'package:shop2hand/presentation/bindings/sign_up_binding.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
 import 'package:shop2hand/presentation/screen/home_screen.dart';
 import 'package:shop2hand/presentation/screen/sign_in_screen.dart';

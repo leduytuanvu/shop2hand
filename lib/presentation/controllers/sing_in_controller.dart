@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:shop2hand/DI/service_locator.dart';
 import 'package:shop2hand/app/services/local_storage_service.dart';
 import 'package:shop2hand/data/repositories/auth_repository.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_in_request.dart';
@@ -20,23 +21,27 @@ class SignInController extends GetxController {
   final userNameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   var signInState = SignInState.initial.obs;
-
+  // final authRepository = getIt.get<AuthenticationRepository>();
   Future<void> signIn() async {
     try {
       signInState(SignInState.loading);
-      await Future.delayed(const Duration(seconds: 3));
+      // await Future.delayed(const Duration(seconds: 3));
       final userName = userNameTextController.text;
       final password = passwordTextController.text;
-
+      // final response = await authRepository
+      //     .signIn(SignInRequest(username: userName, password: password));
       final response = await authenticationRepository.signIn(
         SignInRequest(username: userName, password: password),
       );
 
       if (response != null) {
         LocalStorageService.setUser = response.user;
+        LocalStorageService.setToken = response.token!;
         Get.offAllNamed(Routers.home);
+        Get.snackbar('HI ${response.user!.fullName}', 'WELL COME TO SHOP2HAND');
+      } else {
+        Get.snackbar('ERROR', 'USERNAME OR PASSWORD IS WRONG');
       }
-      Get.snackbar('HI ${response!.user!.fullName}', 'WELL COME TO SHOP2HAND');
     } catch (e) {
       signInState(SignInState.initial);
       log(e.toString());

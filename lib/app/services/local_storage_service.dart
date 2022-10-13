@@ -15,22 +15,43 @@ class LocalStorageService extends GetxService {
   static clearAllData() => _sharedPreferences!.clear();
 
   static String? get getToken {
-    return _sharedPreferences!.getString(AppConstants.sharedReferenceToken);
+    try {
+      String? token = _sharedPreferences!.getString(
+        AppConstants.sharedReferenceToken,
+      );
+      if (token == '') return null;
+      return token;
+    } catch (e) {
+      return null;
+    }
   }
 
   static User? getUser() {
-    Map userMap = jsonDecode(
-      _sharedPreferences!.getString(AppConstants.sharedReferenceUser)!,
-    );
-    return User.fromJson(userMap);
+    try {
+      Map userMap = jsonDecode(
+        _sharedPreferences!.getString(AppConstants.sharedReferenceUser)!,
+      );
+      User user = User.fromJson(userMap);
+      return user;
+    } catch (e) {
+      return null;
+    }
   }
 
   static set setToken(String token) {
-    _sharedPreferences!.setString(AppConstants.sharedReferenceToken, token);
+    try {
+      _sharedPreferences!.setString(AppConstants.sharedReferenceToken, token);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   static set setUser(User? user) {
-    String response = jsonEncode(user);
-    _sharedPreferences!.setString(AppConstants.sharedReferenceUser, response);
+    try {
+      String response = jsonEncode(user);
+      _sharedPreferences!.setString(AppConstants.sharedReferenceUser, response);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

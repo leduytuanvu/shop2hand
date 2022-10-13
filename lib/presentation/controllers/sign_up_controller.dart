@@ -29,7 +29,7 @@ class SignUpController extends GetxController {
 
   Future<void> signUp() async {
     try {
-      await Future.delayed(const Duration(seconds: 3));
+      // await Future.delayed(const Duration(seconds: 3));
       signUpState(SignUpState.loading);
       final userName = usernameTextController.text;
       final password = passwordTextController.text;
