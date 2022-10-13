@@ -1,23 +1,18 @@
 import 'package:get/get.dart';
 import 'package:shop2hand/app/services/local_storage_service.dart';
-import 'package:shop2hand/domain/entities/user.dart';
 
 class HomeController extends GetxController {
-  final LocalStorageService localStorageService;
-  HomeController(this.localStorageService);
+  HomeController();
 
-  // @override
-  // void onReady() {
-  //   validateSession();
-  //   super.onReady();
-  // }
+  var user = LocalStorageService.getUser().obs;
 
-  Future<User?> getUser() async {
-    // final user = await localStorageService.getUser();
-    // if (user != null) {
-    //   return user;
-    // } else {
-    //   return null;
-    // }
+  @override
+  void onReady() {
+    loadUser();
+    super.onReady();
+  }
+
+  void loadUser() {
+    user(LocalStorageService.getUser());
   }
 }

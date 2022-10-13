@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shop2hand/data/repositories/account_repository.dart';
-import 'package:shop2hand/domain/exceptions/auth_exception.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_up_request.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
 
@@ -53,7 +52,7 @@ class SignUpController extends GetxController {
         Get.offAllNamed(Routers.home);
       }
       Get.snackbar('HI ${response!.user!.fullName}', 'WELL COME TO SHOP2HAND');
-    } on AuthException catch (e) {
+    } catch (e) {
       log(e.toString());
       Get.snackbar('ERROR', 'SOMTHING WENT WRONG!');
     }

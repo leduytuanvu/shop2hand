@@ -52,11 +52,14 @@ class SignUpScreen extends GetWidget<SignUpController> {
               Positioned.fill(
                 child: Obx(() {
                   if (controller.signUpState.value == SignUpState.loading) {
-                    return Center(
-                      child: Lottie.asset(
-                        'assets/videos/splash.json',
-                        height: 100,
-                        width: 100,
+                    return Scaffold(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                      body: Center(
+                        child: Lottie.asset(
+                          'assets/videos/splash.json',
+                          height: 100,
+                          width: 100,
+                        ),
                       ),
                     );
                   } else {
