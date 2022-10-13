@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:shop2hand/data/network/api/constant.dart';
 
@@ -56,6 +58,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
+      log(e.toString());
       rethrow;
     }
   }
