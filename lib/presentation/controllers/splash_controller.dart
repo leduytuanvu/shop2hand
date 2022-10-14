@@ -5,7 +5,7 @@ import 'package:shop2hand/data/repositories/auth_repository.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
 
 class SplashController extends GetxController {
-  final AuthenticationRepository authenticationRepository;
+  final AuthRepository authenticationRepository;
   SplashController({required this.authenticationRepository});
 
   @override

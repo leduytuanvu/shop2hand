@@ -1,10 +1,12 @@
 import 'dart:developer';
+import 'package:dio/dio.dart';
+import 'package:shop2hand/data/network/dio/dio_exception.dart';
 import 'package:shop2hand/domain/entities/user.dart';
-import 'package:shop2hand/domain/interface_repositories/account_interface_repository.dart';
+import 'package:shop2hand/domain/interface_repositories/user_interface_repository.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_up_request.dart';
 import 'package:shop2hand/domain/responses/auth_responses/sign_up_response.dart';
 
-class AccountRepository extends IAccountRepository {
+class UserRepository extends IUserRepository {
   @override
   Future<void> signOut() {
     throw UnimplementedError();
@@ -12,10 +14,8 @@ class AccountRepository extends IAccountRepository {
 
   @override
   Future<SignUpResponse?> signUp(SignUpRequest? signUpRequest) async {
-    await Future.delayed(const Duration(seconds: 3));
     try {
       if (signUpRequest == null) return null;
-      // Get API here ====================
       User user = User(
         id: '1',
         fullName: signUpRequest.fullName,
@@ -27,9 +27,10 @@ class AccountRepository extends IAccountRepository {
       String token = 'token';
       SignUpResponse signUpResponse = SignUpResponse(user: user, token: token);
       return signUpResponse;
-    } catch (e) {
+    } on DioError catch (e) {
       log(e.toString());
-      return null;
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      throw errorMessage;
     }
   }
 }
