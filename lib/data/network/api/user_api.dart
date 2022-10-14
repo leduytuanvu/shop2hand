@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:shop2hand/data/network/api/constant.dart';
+import 'package:shop2hand/app/config/app_endpoints.dart';
 import 'package:shop2hand/data/network/dio/dio_client.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_up_request.dart';
 import 'package:shop2hand/domain/requests/user_requests.dart/update_user_request.dart';
@@ -31,7 +31,7 @@ class UserAPI {
 
   Future<Response> getUserFromID(String? id) async {
     try {
-      final Response response = await dioClient.get('${Endpoints.posts}/$id');
+      final Response response = await dioClient.get('${Endpoints.user}/$id');
       return response;
     } catch (e) {
       rethrow;

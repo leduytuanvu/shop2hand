@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:shop2hand/data/repositories/account_repository.dart';
+import 'package:shop2hand/data/repositories/user_repository.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_up_request.dart';
 import 'package:shop2hand/presentation/navigation/routers.dart';
 
@@ -13,7 +13,7 @@ enum SignUpState {
 }
 
 class SignUpController extends GetxController {
-  final AccountRepository accountRepository;
+  final UserRepository accountRepository;
   SignUpController({required this.accountRepository});
 
   final TextEditingController usernameTextController = TextEditingController();
