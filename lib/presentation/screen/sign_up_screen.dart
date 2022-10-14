@@ -20,26 +20,23 @@ class SignUpScreen extends GetWidget<SignUpController> {
                 child: Column(
                   children: [
                     TextFieldWidget(
-                        controller: controller.usernameTextController,
-                        lable: 'Username'),
-                    TextFieldWidget(
-                        controller: controller.fullNameTextController,
-                        lable: 'Full Name'),
+                        controller: controller.emailTextController,
+                        lable: 'Email'),
                     TextFieldWidget(
                         controller: controller.passwordTextController,
                         lable: 'Password'),
                     TextFieldWidget(
+                        controller: controller.fullNameTextController,
+                        lable: 'Full Name'),
+                    TextFieldWidget(
                         controller: controller.phoneTextController,
                         lable: 'Phone'),
                     TextFieldWidget(
-                        controller: controller.genderTextController,
-                        lable: 'Gender'),
+                        controller: controller.usernameTextController,
+                        lable: 'Username'),
                     TextFieldWidget(
-                        controller: controller.descriptionTextController,
-                        lable: 'Description'),
-                    TextFieldWidget(
-                        controller: controller.buildingIDTextController,
-                        lable: 'Buiding ID'),
+                        controller: controller.imageTextController,
+                        lable: 'image'),
                     ElevatedButton(
                       child: const Text('Sign Up'),
                       onPressed: () {

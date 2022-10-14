@@ -1,37 +1,41 @@
 class User {
   String? id;
+  String? username;
   String? fullName;
-  String? description;
+  String? password;
+  String? email;
   String? phone;
-  String? gender;
-  String? buildingID;
+  String? image;
 
   User({
     this.id,
+    this.username,
     this.fullName,
-    this.description,
+    this.password,
+    this.email,
     this.phone,
-    this.gender,
-    this.buildingID,
+    this.image,
   });
 
-  User.fromJson(Map<dynamic, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    username = json['username'];
     fullName = json['fullName'];
-    description = json['description'];
+    password = json['password'];
+    email = json['email'];
     phone = json['phone'];
-    gender = json['gender'];
-    buildingID = json['buildingID'];
+    image = json['image'];
   }
 
-  Map<dynamic, dynamic> toJson() {
-    final Map<dynamic, dynamic> data = <dynamic, dynamic>{};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['username'] = username;
     data['fullName'] = fullName;
-    data['description'] = description;
+    data['password'] = password;
+    data['email'] = email;
     data['phone'] = phone;
-    data['gender'] = gender;
-    data['buildingID'] = buildingID;
+    data['image'] = image;
     return data;
   }
 }

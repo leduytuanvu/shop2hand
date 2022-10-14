@@ -17,9 +17,9 @@ class UserAPI {
           "userName": signUpRequest.username,
           "password": signUpRequest.password,
           "fullName": signUpRequest.fullName,
-          "description": signUpRequest.description,
+          // "description": signUpRequest.description,
           "phone": signUpRequest.phone,
-          "gender": signUpRequest.gender,
+          // "gender": signUpRequest.gender,
           "buildingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         },
       );
@@ -43,10 +43,10 @@ class UserAPI {
       final Response response = await dioClient.put(
         '${Endpoints.user}/$updateUserRequest.id',
         data: {
-          "fullName": updateUserRequest.user?.fullName,
-          "description": updateUserRequest.user?.description,
-          "phone": updateUserRequest.user?.phone,
-          "gender": updateUserRequest.user?.gender,
+          // "fullName": updateUserRequest.user?.fullName,
+          // "description": updateUserRequest.user?.description,
+          // "phone": updateUserRequest.user?.phone,
+          // "gender": updateUserRequest.user?.gender,
           "buildingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         },
       );
