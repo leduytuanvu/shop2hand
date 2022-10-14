@@ -18,19 +18,15 @@ class SplashController extends GetxController {
   var token = LocalStorageService.getToken.obs;
 
   Future<void> validateSession() async {
-    // await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     try {
-      // log('validate1');
       // // user(LocalStorageService.getUser());
       // // token(LocalStorageService.getToken);
       // if (token.value != null) {
-      //   log('validate2');
       //   // final response =
       //   //     await authenticationRepository.getUserFromToken(token.value);
       //   // s
-      //   log('validate3');
       // }
-      // log('validate4');
       Get.offAllNamed(Routers.signIn);
     } catch (e) {
       log(e.toString());

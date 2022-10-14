@@ -1,7 +1,5 @@
-import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:shop2hand/di/service_locator.dart';
 import 'package:shop2hand/app/services/local_storage_service.dart';
 import 'package:shop2hand/data/repositories/auth_repository.dart';
 import 'package:shop2hand/domain/requests/auth_requests/sign_in_request.dart';
@@ -15,27 +13,21 @@ enum SignInState {
 }
 
 class SignInController extends GetxController {
-  // final AuthenticationRepository authenticationRepository;
-  final authenticationRepository = getIt.get<AuthRepository>();
-  // SignInController({required this.authenticationRepository});
+  final AuthRepository authenticationRepository;
+  SignInController({required this.authenticationRepository});
 
   final userNameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
 
   var signInState = SignInState.initial.obs;
-  // final authRepository = getIt.get<AuthenticationRepository>();
   Future<void> signIn() async {
-    // try {
     signInState(SignInState.loading);
-    // final response = await authRepository
-    //     .signIn(SignInRequest(username: userName, password: password));
     final response = await authenticationRepository.signIn(
       SignInRequest(
         username: userNameTextController.text,
         password: passwordTextController.text,
       ),
     );
-
     if (response != null) {
       LocalStorageService.setUser = response.user;
       LocalStorageService.setToken = response.token!;
@@ -44,10 +36,5 @@ class SignInController extends GetxController {
     } else {
       Get.snackbar('ERROR', 'USERNAME OR PASSWORD IS WRONG');
     }
-    // } catch (e) {
-    //   signInState(SignInState.initial);
-    //   log(e.toString());
-    //   Get.snackbar('ERROR', 'USERNAME OR PASSWORD IS WRONG');
-    // }
   }
 }

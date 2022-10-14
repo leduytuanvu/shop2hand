@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "897156357608",
+    "project_id": "shop2hand-app",
+    "storage_bucket": "shop2hand-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897156357608:android:ea99650adb11d14c0b585d",
+        "android_client_info": {
+          "package_name": "com.example.shop2hand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897156357608-fj36v5pkni556qfpvurk7etsimjlr8lo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC85D7gpJ8taHz-dl4fYgc2oOunXXxFBeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897156357608-fj36v5pkni556qfpvurk7etsimjlr8lo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

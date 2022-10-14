@@ -17,13 +17,13 @@ class UserRepository extends IUserRepository {
     try {
       if (signUpRequest == null) return null;
       User user = User(
-        id: '1',
-        fullName: signUpRequest.fullName,
-        description: signUpRequest.description,
-        gender: signUpRequest.gender,
-        phone: signUpRequest.phone,
-        buildingID: signUpRequest.buildingId,
-      );
+          // id: '1',
+          // fullName: signUpRequest.fullName,
+          // description: signUpRequest.description,
+          // gender: signUpRequest.gender,
+          // phone: signUpRequest.phone,
+          // buildingID: signUpRequest.buildingId,
+          );
       String token = 'token';
       SignUpResponse signUpResponse = SignUpResponse(user: user, token: token);
       return signUpResponse;

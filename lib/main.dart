@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ void main() async {
   ));
   DependencyCreator.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await initServices();
   runApp(const Shop2Hand());
 }

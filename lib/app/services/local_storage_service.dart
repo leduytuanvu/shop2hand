@@ -28,7 +28,7 @@ class LocalStorageService extends GetxService {
 
   static User? getUser() {
     try {
-      Map userMap = jsonDecode(
+      Map<String, dynamic> userMap = jsonDecode(
         _sharedPreferences!.getString(AppConstants.sharedReferenceUser)!,
       );
       User user = User.fromJson(userMap);

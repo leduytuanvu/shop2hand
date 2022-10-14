@@ -2,18 +2,16 @@ class SignUpRequest {
   String? username;
   String? password;
   String? fullName;
-  String? description;
+  String? email;
   String? phone;
-  String? gender;
-  String? buildingId;
+  String? image;
 
   SignUpRequest({
     this.username,
     this.password,
     this.fullName,
-    this.description,
+    this.email,
     this.phone,
-    this.gender,
-    this.buildingId,
+    this.image,
   });
 }
